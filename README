@@ -22,11 +22,21 @@ So, this is a known problem, but I wanted to see how easy it really is to do thi
 and I wanted to try it myself, so I built a PoC.
 
 The requirements are:
- - The user points his browser to the attacker's webserver and stays on that server
+ - The user points his browser to an attacker's webserver and stays on that server
    long enough (a bit over 4 minutes in my implementation)
- - The attacker controls the webserver or the exit node (or something between them)
+ - An attacker controls the webserver or the exit node (or something between them)
    (in my implementation, he controls the webserver)
- - The attacker can measure the internet traffic of all possible users
+ - An attacker can measure the internet traffic of all possible users
+ - The attacking machines have their time synced over NTP or so
+
+It is NOT required, however, that the webserver is run by the same attacker who also
+runs the passive traffic analysis near the users – they can be two distinct attackers
+who decide to collaborate after-the-fact. The webserver owner only needs to save the
+64-bit ID he generated, the traffic analysis attacker needs to save one bit every four
+seconds for every connection.
+
+Also, it is NOT required that the victim's browser supports JavaScript or so. curl would
+already be sufficient.
 
 In my implementation, the attacking server can encode 64 bits into a pattern
 of data bursts – simplified, a zero becomes "first data, then nothing" and a one
