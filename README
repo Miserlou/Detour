@@ -55,6 +55,8 @@ stuff that would probably improve the accuracy and speed a lot.
 My proof-of-concept code is at <http://git.thejh.net/?p=detour.git;a=tree>.
 It needs libpcap and works on Linux. It probably won't work on Windows.
 
+You can download the code with "git clone git://thejh.net/detour.git".
+
 Compile with "./compile.sh".
 On the server, run "./pulser". This will open an HTTP server on port 4422.
 On the monitoring device (just run it on your computer if you just want to
