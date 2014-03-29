@@ -6,6 +6,7 @@ void handle_connection(int s) {
 
   char line_in[100];
   if (!fgets(line_in, 100, stdin)) return;
+  if (!strncmp(line_in, "GET /", strlen("GET /"))) return;
   char *p = line_in + strlen("GET /");
 
   setbuf(stdout, NULL);
